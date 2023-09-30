@@ -13,7 +13,7 @@ namespace Mastermind
             //GameController controller = new GameController();
             //controller.start(settings);
 
-            MastermindController controller = new MastermindController();
+            GameController controller = new GameController();
             controller.Start();
         }
     }
