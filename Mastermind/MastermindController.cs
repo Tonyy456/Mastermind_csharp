@@ -4,28 +4,22 @@ using System.Text;
 
 namespace Mastermind
 {
-    /* Author: Anthony D'Alesandro
-     * 
-     * Enum for difficulty. Placed here so avoid excess files.
-     */
-    public enum Difficulty
-    {
-        Easy,
-        Medium, 
-        Hard
-    }
+
 
     public class MastermindController
     {
-        public Difficulty Difficulty { get; set; } = Difficulty.Easy;
-        public MastermindController(Difficulty difficulty)
+
+        public MastermindController() { }
+
+        public void SetCode(string code)
         {
-            this.Difficulty = difficulty;
+
         }
 
-        public void SetDifficulty(Difficulty difficulty)
+        public string EvaluateGuess(string guess)
         {
-            Difficulty = difficulty;
+
+            return "";
         }
 
         public void Start()
