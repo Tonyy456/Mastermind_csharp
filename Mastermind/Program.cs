@@ -3,16 +3,14 @@ using System.IO;
 
 namespace Mastermind
 {
+    /* Author: Anthony D'Alesandro
+     * 
+     * Main method for mastermind
+     */
     class Program
     {
         static void Main(string[] args)
         {
-            // Initialize Game Controller with prameters
-
-            // ALLOW USER TO SELECT DIFFICULTY, length of password/# of guesses?
-            //GameController controller = new GameController();
-            //controller.start(settings);
-
             GameController controller = new GameController();
             controller.Start();
         }

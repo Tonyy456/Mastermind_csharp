@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Mastermind
 {
+    /* Author: Anthony D'Alesandro
+     * 
+     * Controls main game flow. Enter through Start button.
+     */
     public class GameController
     {
         //constants
@@ -23,20 +27,17 @@ namespace Mastermind
             {
                 sb.Append(allowedChars[random.Next(allowedChars.Length - 1)]);
             }
-            controller = new MastermindController(sb.ToString());
+            controller = new MastermindController("3232");
         }
 
-        public void Reset()
-        {
-            //allow multiple games to be played without re-running code.
-        }
+        /* Author: Anthony D'Alesandro
+         * 
+         * Controls main game flow. Enter through Start button.
+         */
         public void Start()
         {
             PromptIntroduction();
             DisplayInstructions();
-            Console.WriteLine($"Potential code characters: {allowedChars}");
-            Console.WriteLine($"Secret code: {controller.Code}");
-
             while(numUserGuesses < maxGuesses)
             {
                 Console.WriteLine("Enter your guess: ");
@@ -51,27 +52,52 @@ namespace Mastermind
             Defeat();
         }
 
-        public void Victory()
+        /* Author: Anthony D'Alesandro
+         * 
+         * Reset the game... template code that can be expanded off.
+         */
+        private void Reset()
+        {
+            //allow multiple games to be played without re-running code.
+        }
+
+        /* Author: Anthony D'Alesandro
+         * 
+         * Display victory message and actions
+         */
+        private void Victory()
         {
             Console.WriteLine("You solved it!");
         }
 
-        public void Defeat()
+        /* Author: Anthony D'Alesandro
+         * 
+         * Display defeat message and actions
+         */
+        private void Defeat()
         {
             Console.WriteLine("You lose :(");
         }
 
-        public void DisplayInstructions()
+        /* Author: Anthony D'Alesandro
+         * 
+         * Display instructions
+         */
+        private void DisplayInstructions()
         {
-
+            Console.WriteLine($"Secret code: {controller.Code}");
+            Console.WriteLine(
+                $"Try to guess the #{codeLength} digit code that the program is thinking.\n" +
+                $"It will return you a code and attempt to figure out the pattern behind it!\n" +
+                $"You have #{numUserGuesses}\n" 
+                );
         }
 
-        public void PromptRules()
-        {
-
-        }
-
-        public void PromptIntroduction()
+        /* Author: Anthony D'Alesandro
+         * 
+         * Display introduction
+         */
+        private void PromptIntroduction()
         {
             Console.WriteLine(
                 " __          __  _                            _         \n" + 

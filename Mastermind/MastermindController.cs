@@ -5,7 +5,10 @@ using System.Text;
 namespace Mastermind
 {
 
-
+    /* Author: Anthony D'Alesandro
+     * 
+     * Controls mastermind code logic.
+     */
     public class MastermindController
     {
         /* Author: Anthony D'Alesandro
@@ -55,22 +58,22 @@ namespace Mastermind
          */
         public string EvaluateGuess(string guess)
         {
-            string evaluation = "";
-            List<char> shared = new List<char>(); //shared characters in both strings but not as the same position...
-            for(int i = 0; i < CodeLength && i < guess.Length; i++)
+            StringBuilder evaluation = new StringBuilder();
+            List<char> matchable = new List<char>(Code.ToCharArray());
+            for (int i = 0; i < CodeLength && i < guess.Length; i++)
             {
-                char code_c = this.Code[i];
-                char guess_c = guess[i];
-                if (code_c == guess_c)
+                char g = guess[i];
+                if (Code[i] == g)
                 {
-                    evaluation = '+' + evaluation;
-                } else if (this.Code.Contains(guess_c) && !shared.Contains(guess_c))
+                    evaluation.Insert(0, '+');
+                    matchable.Remove(g);
+                } else if (matchable.Contains(g))
                 {
-                    evaluation += '-';
-                    shared.Add(guess_c);
+                    evaluation.Append('-');
+                    matchable.Remove(g);
                 }
             }
-            return evaluation;
+            return evaluation.ToString();
         }
     }
 }
